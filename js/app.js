@@ -48,31 +48,34 @@ function surveyButton(self)
 
 //#region ----------- QR Scanner -----------
     
-    //create scanner instance
-    const scanner = new Html5QrcodeScanner('reader', { 
-        qrbox: { width: 250, height: 250 }, fps: 20 
-    });
-
+    // create scanner instance
     const qr = document.getElementById('qr');
     const result = document.getElementById('result');
-    const resultTxt = result.firstElementChild;
+    let scanner = new Html5QrcodeScanner("reader", { fps: 20, qrbox: { width: 250, height: 250 } });
     
-    textFit(result);
     document.getElementById('open-qr').addEventListener('click', openQR);
     document.getElementById('close-qr').addEventListener('click', closeQR);
 
     function openQR()
     {
         scanner.render(success, error);
+        console.log("start scanning");
         removeClass(qr, 'unselectable');
         swipeClases(qr, 'fadeOut', 'fadeIn');
     }
     function closeQR()
     {
+        scanner.clear();
         addClass(qr, 'unselectable');
         swipeClases(qr, 'fadeIn', 'fadeOut');
     }
     function error(exception) { closeQR(); console.error(exception); }
-    function success(result) { resultTxt.innerHTML = result; scanner.clear(); }
+    function success(text)
+    {
+        scanner.clear();
+        console.log(`scaned ${text}`);
+        result.innerHTML = `<p>${text}</p>`;
+        textFit(result);
+    }
 
 //#endregion 

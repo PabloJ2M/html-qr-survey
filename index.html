@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia QR</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="library/textFit.min.js"></script>
-    <script defer src="library/html5-qrcode.min.js"></script>
     <script defer src="js/utility.js"></script>
     <script defer src="js/app.js"></script>
 </head>
 <body>
+    <script src="library/textFit.min.js"></script>
+    <script src="library/html5-qrcode.min.js"></script>
+
     <!-- <header></header> -->
     <div id="trivia">
         <div id="pregunta" class="center-items card-shape">
@@ -32,7 +33,7 @@
     <div id="qr" class="unselectable fade fadeOut">
         <div id="qr-container" class="card-shape">
             <div id="reader"></div>
-            <div id="result" class="center-items"><p></p></div>
+            <div id="result" class="center-items"></div>
             <input id="close-qr" class="card-shape" type="button" value="Cerrar">
         </div>
     </div>

@@ -4,7 +4,6 @@ function swipeClases(item, from, to) { item?.classList.replace(from, to); }
 function removeClass(item, name) { item?.classList.remove(name); }
 function addClass(item, name) { item?.classList.add(name); }
 
-
 //Logic
 const shuffleArray = array =>
 {
