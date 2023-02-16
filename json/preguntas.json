@@ -1,0 +1,27 @@
+{
+    "preguntas" :
+    [
+        {
+            "id" : 0,
+            "pregunta" : "pregunta 1 de 5000 :u",
+            "respuesta" : "respuesta 1",
+            "respuestas" :
+            [
+                "respuesta 1",
+                "respuesta 2",
+                "respuesta 3"    
+            ]
+        },
+        {
+            "id" : 1,
+            "pregunta" : "pregunta 2 de 2 xD",
+            "respuesta" : "respuesta 2",
+            "respuestas" :
+            [
+                "respuesta 1",
+                "respuesta 2",
+                "respuesta 3"    
+            ]
+        }
+    ]
+}
