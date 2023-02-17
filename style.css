@@ -76,6 +76,14 @@ header
 
 /*#region ------------ QR ------------*/
 
+#qr-scanner
+{
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
 #qr
 {
     top: 0;
@@ -86,14 +94,17 @@ header
 }
 #qr #qr-container
 {
+    top: 50%;
+    height: 50%;
     margin: 30px;
     position: relative;
-    height: calc(100% - 60px);
     background-color: white;
+    transform: translateY(-65%);
 }
 #qr #qr-container #result
 {
-    height: 50%;
+    height: 60%;
+    padding: 20px;
 }
 #qr #qr-container #result p
 {

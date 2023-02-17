@@ -5,7 +5,6 @@ textFit(pregunta);
 
 //#endregion
 
-
 //#region ------------ Trivia --------------
 
 const preguntaTxt = document.getElementById('pregunta-text');
@@ -48,34 +47,51 @@ function surveyButton(self)
 
 //#region ----------- QR Scanner -----------
     
-    // create scanner instance
     const qr = document.getElementById('qr');
     const result = document.getElementById('result');
-    let scanner = new Html5QrcodeScanner("reader", { fps: 20, qrbox: { width: 250, height: 250 } });
-    
-    document.getElementById('open-qr').addEventListener('click', openQR);
-    document.getElementById('close-qr').addEventListener('click', closeQR);
+    const scanner = document.getElementById('qr-scanner');
 
-    function openQR()
+    // let cameraID;
+    let config = { fps: 10, qrbox: { width: 150, height: 150 } }
+    let codeScanner = new Html5QrcodeScanner("reader", config);;
+    
+    //Callbacks
+    const errorCallback = (exception) => {  }
+    const qrCodeSuccessCallback = (decodedText) =>
     {
-        scanner.render(success, error);
+        result.innerHTML = `<p> ${decodedText} </p>`;
+        addClass(scanner, 'unselectable');
+        codeScanner.clear();
+        textFit(result);
+        showResult();
+    }
+    
+    //Inputs
+    document.getElementById('open-qr').addEventListener('click', openQR);
+    document.getElementById('close-qr').addEventListener('click', closeResult);
+
+    async function openQR()
+    {
+        codeScanner.render(qrCodeSuccessCallback, errorCallback);
+        removeClass(scanner, 'unselectable');
         console.log("start scanning");
-        removeClass(qr, 'unselectable');
-        swipeClases(qr, 'fadeOut', 'fadeIn');
+        result.innerHTML = '';
     }
     function closeQR()
     {
-        scanner.clear();
-        addClass(qr, 'unselectable');
-        swipeClases(qr, 'fadeIn', 'fadeOut');
+        addClass(scanner, 'unselectable');
+        console.log("close scanner");
+        codeScanner.clear();
     }
-    function error(exception) { closeQR(); console.error(exception); }
-    function success(text)
+    function showResult()
     {
-        scanner.clear();
-        console.log(`scaned ${text}`);
-        result.innerHTML = `<p>${text}</p>`;
-        textFit(result);
+        swipeClases(qr, 'fadeOut', 'fadeIn');
+        removeClass(qr, 'unselectable');
+    }
+    function closeResult()
+    {
+        swipeClases(qr, 'fadeIn', 'fadeOut');
+        addClass(qr, 'unselectable');
     }
 
 //#endregion 

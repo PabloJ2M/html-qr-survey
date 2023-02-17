@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia QR</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Library -->
+    <script src="library/textFit.min.js"></script>
+    <script src="library/html5-qrcode.min.v2.3.4.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.0/html5-qrcode.min.js"></script> -->
+
+    <!-- Scripts -->
     <script defer src="js/utility.js"></script>
     <script defer src="js/app.js"></script>
 </head>
 <body>
-    <script src="library/textFit.min.js"></script>
-    <script src="library/html5-qrcode.min.js"></script>
-
     <!-- <header></header> -->
     <div id="trivia">
         <div id="pregunta" class="center-items card-shape">
@@ -24,20 +28,21 @@
             </button>
         </div>
         <div id="respuestas">
-            <input class="r-button card-shape" type="button" value="value 1">
-            <input class="r-button card-shape" type="button" value="value 2">
-            <input class="r-button card-shape" type="button" value="value 3">
+            <input class="r-button card-shape" type="button" value="">
+            <input class="r-button card-shape" type="button" value="">
+            <input class="r-button card-shape" type="button" value="">
         </div>
     </div>
 
     <div id="qr" class="unselectable fade fadeOut">
         <div id="qr-container" class="card-shape">
-            <div id="reader"></div>
             <div id="result" class="center-items"></div>
             <input id="close-qr" class="card-shape" type="button" value="Cerrar">
         </div>
     </div>
 
-    <div id="loader" class="unselectable"></div>
+    <div id="qr-scanner" class="unselectable">
+        <div id="reader"></div>
+    </div>
 </body>
 </html>
